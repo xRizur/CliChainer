@@ -27,7 +27,7 @@ var runCmd = &cobra.Command{
         if !ok {
             log.Fatalf("Nie znaleziono aliasu: %s", alias)
         }
-		
+
         for _, command := range aliasConfig.Commands {
 			updatedArgs := replaceDynamicPlaceholders(command.Args, commandArgs, config.Variables)
 
@@ -56,15 +56,4 @@ func replaceDynamicPlaceholders(args []string, commandArgs []string, variables m
         updatedArgs = append(updatedArgs, updatedArg)
     }
     return updatedArgs
-}
-func extractRequiredArguments(args []string) []string {
-    var requiredArgs []string
-    for _, arg := range args {
-        if strings.Contains(arg, "{") && strings.Contains(arg, "}") {
-            // Przykładowe przetwarzanie, aby wyodrębnić nazwę wymaganego argumentu
-            trimmedArg := strings.Trim(arg, "{}")
-            requiredArgs = append(requiredArgs, trimmedArg)
-        }
-    }
-    return requiredArgs
 }
