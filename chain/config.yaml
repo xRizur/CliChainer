@@ -1,0 +1,12 @@
+variables:
+  subscriptions:
+    student: "af68a2d7-d2ce-47bc-858a-6fbdf6e8265e"
+    starter: "a5bd27c9-45ac-466b-8ce1-77f75150805e"
+
+cli_aliases:
+  aks_login:
+    commands:
+      - command: "az"
+        args: ["account", "set", "--subscription", "{subscriptions.$arg}"]
+      - command: "az"
+        args: ["account", "show"]
